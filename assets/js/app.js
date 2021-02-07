@@ -13,6 +13,42 @@ const reloadIcon = document.querySelector('.fa'); //the reload button at the top
 let DB;
 
 
+// filter.addEventListener('keyup',filterTasks);
+//  function filterTasks(e){
+//     var input, Uppers, unOrder, li, temp, index, inText;
+//     input = document.getElementById("filter");
+//     Uppers = input.value.toUpperCase();
+//     unOrder = document.getElementById("lis");
+//     li = unOrder.getElementsByTagName("li");
+//     for (index = 0; index < li.length; index++) {
+//         temp = li[index];
+//         inText = temp.textContent;
+//         if (inText.toUpperCase().indexOf(Uppers) != -1) {
+//             li[index].style.display = "block";
+//         } else {
+//             li[index].style.display = "none";
+//         }
+//     }
+// }
+
+filter.addEventListener('keyup',filterTasks);
+function filterTasks(e){
+    const seaVal = e.target.value;
+    addToTaskList(seaVal);
+}
+function addToTaskList(seaVal) {
+    var row  = taskList.querySelectorAll(".collection-item");
+    row.forEach(contVal => {
+        if(contVal.textContent.includes(seaVal)){
+            contVal.style.display = "block";
+        }
+        else{
+            contVal.style.display = "None";
+        }
+    });
+}
+
+
 
 // Add Event Listener [on Load]
 document.addEventListener('DOMContentLoaded', () => {
