@@ -70,7 +70,18 @@ document.addEventListener('DOMContentLoaded', () => {
         2. Use the id on put method of index db
         
         */
+       var trans = DB.transaction(['tasks'],'readwrite');
+       var objStore = transaction.objectStore('tasks'); 
 
+       const objStoreReq = objStore.get(id);
+       objStoreReq.onsuccess = () =>{
+
+       const i = objStoreReq.result
+       i.taskname = taskInput.value
+
+       const updReq = objStore.put(i)
+        displayTask();
+       }
         history.back();
     }
 
