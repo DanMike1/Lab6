@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         */
        var trans = DB.transaction(['tasks'],'readwrite');
-       var objStore = transaction.objectStore('tasks'); 
+       var objStore = trans.objectStore('tasks'); 
 
        const objStoreReq = objStore.get(id);
        objStoreReq.onsuccess = () =>{

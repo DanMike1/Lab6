@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // create a new object with the form info
         let newTask = {
             taskname: taskInput.value,
+            taskdate: new Date(),
         }
 
         // Insert the object into the database 
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.innerHTML = `
                  <i class="fa fa-remove"></i>
                 &nbsp;
-                <a href="/Lesson 04 [Lab 06]/Finished/edit.html?id=${cursor.value.id}"><i class="fa fa-edit"></i> </a>
+                <a href="edit.html?id=${cursor.value.id}"><i class="fa fa-edit"></i> </a>
                 `;
                 // Append link to li
                 li.appendChild(link);
