@@ -13,24 +13,6 @@ const reloadIcon = document.querySelector('.fa'); //the reload button at the top
 let DB;
 
 
-// filter.addEventListener('keyup',filterTasks);
-//  function filterTasks(e){
-//     var input, Uppers, unOrder, li, temp, index, inText;
-//     input = document.getElementById("filter");
-//     Uppers = input.value.toUpperCase();
-//     unOrder = document.getElementById("lis");
-//     li = unOrder.getElementsByTagName("li");
-//     for (index = 0; index < li.length; index++) {
-//         temp = li[index];
-//         inText = temp.textContent;
-//         if (inText.toUpperCase().indexOf(Uppers) != -1) {
-//             li[index].style.display = "block";
-//         } else {
-//             li[index].style.display = "none";
-//         }
-//     }
-// }
-
 filter.addEventListener('keyup',filterTasks);
 function filterTasks(e){
     const seaVal = e.target.value;
@@ -46,6 +28,64 @@ function addToTaskList(seaVal) {
             contVal.style.display = "None";
         }
     });
+}
+
+
+function sortAscend() {
+    var unordVal;
+    var index;
+    var content;
+    var x, y, b, c;
+    unordVal = document.getElementById('lis');
+    x = true
+    while (x) {               
+        x = false
+        b = list.querySelectorAll(".collection-item");
+        for (index = 0; index <b.length - 1; index++) {
+            y = false;
+            b = content[index].lastChild.textContent
+            c = content[index + 1].lastChild.textContent
+            if (b > c) {
+                y = true;
+                break;
+            }
+        }
+        if (y) {
+            content[index].parentNode.insertBefore(content[index + 1], content[index]);
+            x = true
+
+
+        }
+    }
+}
+//descending
+function sortDescend() {
+    var unordVal;
+    var index;
+    var content;
+    var x, y, z, b, c;
+    unordVal = document.getElementById('lis');
+    content = unordVal.getElementsByTagName('li');
+    x = true
+    while (x) {        
+        x = false
+        z = content.length - 1
+        for (index = 0; index < z; index++) {
+            y = false;
+            b = content[index].lastChild.textContent
+            c = content[index + 1].lastChild.textContent
+            if (b < c) {
+                y = true;
+                break;
+            }
+        }
+        if (y) {
+            content[index].parentNode.insertBefore(content[index + 1], content[index]);
+            x = true
+
+
+        }
+    }
 }
 
 
